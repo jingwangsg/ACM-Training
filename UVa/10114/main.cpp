@@ -1,4 +1,4 @@
-#include<iostream>
+#include<bits/stdc++.h>
 
 using namespace std;
 
@@ -12,7 +12,6 @@ struct Loan {
 int main() {
     #ifndef ONLINE_JUDGE
         freopen("in.txt", "r", stdin);
-        freopen("out.txt", "w", stdout);
     #endif
     ios::sync_with_stdio(false);
 
