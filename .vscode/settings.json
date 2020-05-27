@@ -1,5 +1,8 @@
 {
     "files.associations": {
-        "iostream": "cpp"
+        "*.m": "matlab",
+        "iostream": "cpp",
+        "iosfwd": "cpp",
+        "xiosbase": "cpp"
     }
 }
