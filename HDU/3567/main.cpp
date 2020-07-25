@@ -2,31 +2,27 @@
 #include<queue>
 #include<algorithm>
 #include<cstring>
+#include<string>
 using namespace std;
-//! https://www.geeksforgeeks.org/bidirectional-search/?ref=lbp
 
 char ch;
 int A[9], B[9];
 int dx[4] = {3, -1, 1, -3};
 char opt[4] = {'d', 'l', 'r', 'u'};
+//d l r u
 int fact[9];
 int tmp_arr[9];
 int tgt_hash;
 int case_id;
 bool visited[370000];
-//keep track of the transition betweeen states and parent nodes
-struct list {
-    int opt, parent_p, len;
-}
 
-
-struct QueItem {
+struct node {
     int state[9];
     int hash;
     int pos;
     string opts;
 
-    QueItem(int *state_) {
+    node(int *state_) {
         for (int i=0; i<9; i++){ 
             this->state[i] = state_[i];
             if (this->state[i] == 0) pos = i;
@@ -35,7 +31,7 @@ struct QueItem {
         this->opts = "";
     }
 
-    QueItem& operator =(const QueItem &node_) {
+    node& operator =(const node &node_) {
         for (int i=0; i<9; i++) this->state[i] = node_.state[i];
         this->hash = node_.hash;
         this->pos = node_.pos;
@@ -54,25 +50,11 @@ struct QueItem {
         }
     }
 };
-queue <QueItem> q;
-
-//! https://www.geeksforgeeks.org/bidirectional-search/
-void bfs(queue <QueItem> q, bool *visited, int *parent, bool direction) {
-    QueItem cur_node = q.front(); q.pop();
-    if (direction) {
-        //forward
-        for (int i=0; i<4; i++) {
-            //check if the opt is valid
-            int cur_pos = cur_node.pos;
-            
-
-        }
-    }
-}
 
 void bfs() {
+    queue <node> q;
     while (!q.empty()) {
-        QueItem cur_node = q.front(); q.pop();
+        node cur_node = q.front(); q.pop();
         visited[cur_node.hash] = 1;
         for (int i=0; i<4; i++) {
             int cur_pos = cur_node.pos;
@@ -85,9 +67,19 @@ void bfs() {
             for (int i=0; i<9; i++) tmp_arr[i] = cur_node.state[i];
             swap(tmp_arr[cur_pos], tmp_arr[next_pos]);
 
-            QueItem new_node = node(tmp_arr);
+            node new_node = node(tmp_arr);
             new_node.opts = cur_node.opts + opt[i];
             if (!visited[new_node.hash]) q.push(new_node);
+            // cout << "From:" << endl;
+            // cur_node.print();
+            // cout << "To:" << endl;
+            // new_node.print();
+
+            if (new_node.hash == tgt_hash) {
+                cout << "Case " << case_id << ": " <<new_node.opts.size() << endl;
+                cout << new_node.opts << endl;
+                return;
+            }
         }
     }
 }

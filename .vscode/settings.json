@@ -3,6 +3,7 @@
         "*.m": "matlab",
         "iostream": "cpp",
         "iosfwd": "cpp",
-        "xiosbase": "cpp"
+        "xiosbase": "cpp",
+        "algorithm": "cpp"
     }
 }
