@@ -10,7 +10,10 @@ string mode;
 int n;
 
 int main() {
+    #ifndef ONLINE_JUDGE
     freopen("in.txt", "r", stdin);
+    #endif
+
     ios::sync_with_stdio(false);
     cin.tie(0);
 
@@ -23,15 +26,23 @@ int main() {
     while (T--) {
         cin >> n >> mode;
 
-        cin >> opt;
-        if (opt == "IN") {
-            cin >> val;
-            arr[tail++] = val;
-        } else {
-            if (mode == "FIFO") {
-                cout << arr[--tail] << "\n";
+        head = tail = 0;
+
+        for (int i=0; i<n; i++) {
+            cin >> opt;
+            if (opt == "IN") {
+                cin >> val;
+                arr[tail++] = val;
             } else {
-                cout << arr[head++] << "\n";
+                if (head == tail) {
+                    cout << "None\n";
+                    continue;
+                }
+                if (mode == "FILO") {
+                    cout << arr[--tail] << "\n";
+                } else {
+                    cout << arr[head++] << "\n";
+                }
             }
         }
     }

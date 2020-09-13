@@ -1,0 +1,11 @@
+7
+IN 1 1
+IN 1 2
+OUT 1
+OUT 2
+IN 2 1
+OUT 2
+OUT 1
+2
+IN 1 1
+OUT 1

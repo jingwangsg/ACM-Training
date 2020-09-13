@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "cppdbg",
+            "request": "launch",
+            "name": "Debug",
+            "program": "${fileDirname}/${fileBasenameNoExtension}.o",
+            "args": [],
+            "cwd": "${fileDirname}",
+            "preLaunchTask": "Build with g++"
+        }
+    ]
+}
